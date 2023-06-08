@@ -6,10 +6,12 @@ Package bil
 
 System BIL "" : Application : Application_Web
 
+
 /********************************************************
     DataEntities view
 *********************************************************/
-		
+
+
 DataEntity e_PRODU "Products" : Master [
 	attribute CODPRODU "Product IDs" : Integer(8) [constraints ( PrimaryKey )]
 	attribute NAME "Name" : Text(50) 
@@ -19,3 +21,4 @@ DataEntity e_PRODU "Products" : Master [
 	attribute LOCAL "" : Text(50) 
 	description "Product"
 ]
+ddss
