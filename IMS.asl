@@ -10,7 +10,7 @@ Import bil.BIL.*
     System definition 
 *********************************************************/
 
-System IMS "Invoice Management System" : Application : Application_Web [ 
+System IMS "Invoice Demo change" : Application : Application_Web [ 
 	description 
 	"
 	Invoice Management System is a system that allows users to manage customers, products and invoices. 
