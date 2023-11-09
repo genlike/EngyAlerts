@@ -159,7 +159,10 @@ DataEntity e_User "User" : Master [
 /********************************************************
    DataEntityCluster view
 *********************************************************/
-View view_DataEntityClusters: DataEntityClusterView [ec_Customer, ec_Invoice, ec_Invoice_Simple, ec_Product, ec_Customer]
+View view_DataEntityClusters:
+ UseCaseView [
+    a_Admin,uc_1_1_CreateInvoice,uc_1_ManageInvoices
+]
 
 DataEntityCluster ec_User "Users" : Master [main e_User]
 DataEntityCluster ec_Customer "Customers" : Master [main e_Customer description "ec_Customer" ]
@@ -186,13 +189,13 @@ Data d_Product : e_Product :=
 
 Data d_VAT : e_VAT := 
    [[Code,	Name,		Rate,		Value]
-	[1, 	"Standard", "Standard", 23%	 ]
-	[2, 	"Reduced" , "Reduced", 	13%	 ]
-	[3, 	"Special" , "Special",	30%	 ]]
+	[3, 	"Standard", "Standard", 23%	 ]
+	[4, 	"Reduced" , "Reduced", 	13%	 ]
+	[5, 	"Special" , "Special",	30%	 ]]
 
 Data d1_Customer : e_Customer :=
    [[ID,   Name, 			fiscalID	 ]
-	[0001, "Customer 1", 	"999 888 777"]
+	[0001, "Customer 4", 	"999 888 777"]
 	[0002, "Customer 2",	"444 888 777"]]
 
 Data d_Invoice : e_Invoice := 
@@ -202,8 +205,9 @@ Data d_Invoice : e_Invoice :=
 
 Data d_InvoiceLine : e_InvoiceLine := 
    [[invoiceID, order,	productID, Value]
+   	[0091,		2, 		0002,	   60.99]]
 	[0091, 		1, 		0001, 	   40.00]
-	[0091,		2, 		0002,	   60.99]]
+
 
 
 
@@ -244,7 +248,7 @@ ActionType aArchiveAndExportInvoices [description "Archive and Export Paid Invoi
 UseCase uc_1_ManageInvoices "Manage Invoices" : EntitiesManage [ 
   primaryActor a_Operator   
   dataEntity ec_Invoice 
-  extensionPoints   xp_Create, xp_Update, xp_ConfirmPayment, xp_SendInvoices, xp_Print 
+  extensionPoints xp_Create, xp_Update, xp_ConfirmPayment, xp_SendInvoices, xp_Print 
    
   mainScenario s0 (Main) "Happy Flow"   [  
     s1 (System) "Shows a list of Invoices and available actions, namely of CreateInvoice, UpdateInvoice, ..." 
@@ -419,5 +423,3 @@ UseCase uc_6_2_PrintCustomers "Print Customers Report" : EntitiesReport [
   dataEntity ec_Customer
   actions aPrint, aClose
   extends uc_6_ManageCustomers onExtensionPoint Print_Customers]
-
-System 

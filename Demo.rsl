@@ -10,5 +10,6 @@ Actor aU_SysAdmin "Sys Administrator" : User [isA aU_User description "System Ad
 Actor aS_ExternalSystem "ExternalSystem" : ExternalSystem [ description "An external system that interacts with the system in consideration"]
 
 
-View demoView "demoView" : ActorView [aU_Manager, aU_Operator, aU_User, aU_SysAdmin]
-View demoView1 "demoView1" : ActorView [aS_ExternalSystem]
+View demoView "demoView" : UseCaseView 
+[aU_Manager, aU_Operator,
+ aU_User, aU_SysAdmin]

@@ -208,7 +208,11 @@ Data d_VAT : e_VAT :=
 	[3, 	 "Special",	30%	 ]]
 
 
-View useCase1 : UseCaseView [uc_2_ManageVATs,uc_3_BrowseVATS, uc_1_2_UpdateInvoice ]
+View useCase1 : UseCaseView 
+[   
+ uc_1_1_CreateInvoice, uc_2_ManageVATs, uc_1_ManageInvoices
+
+]
 
 
 /**********************************************************************/
@@ -306,7 +310,6 @@ UIContainer uiCt_Details : Window : Window_Modal [
 			event ev_endVate_VAT : Submit [navigationFlowTo ev_endVate_VAT]
 	 	]
 	]
-
 ]
 	
 
