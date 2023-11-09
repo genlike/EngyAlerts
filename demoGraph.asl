@@ -1,21 +1,14 @@
+
 Package p_BillingASL
- 
+
+Import p_BillingASL.Billing_ASL.*
+
 /********************************************************  
    System definition
 *********************************************************/
 
 System Billing_App_ASL "BillingSystem (Application Level)" : Application: Application_Web 
 [ isFinal description "Billing system "] 
-
-  
-/********************************************************
-   DataEntities view
-*********************************************************/
-
-DataEnumeration SizeKind values (SMALL "Small", REG "Regular", LARGE "Large", EXTRA "ExtraLarge")
-DataEnumeration UserRoleKind values (Admin, Manager, Operator, Customer)  
-DataEnumeration InvoiceStatusKind values (PEND "Pending", Approved, REJ "Rejected", Issued, Paid, Deleted)   
-DataEnumeration VATRateKind values (Standard, Reduced, Special)   
 
 
 DataAttributeType GeoPoint [description "GeoPoint attribute type (for geospatial data)"]
@@ -208,7 +201,12 @@ Data d_VAT : e_VAT :=
 	[3, 	 "Special",	30%	 ]]
 
 
-View dskajdal2 : UseCaseView [uc_2_ManageVATs,uc_3_BrowseVATS, uc_1_2_UpdateInvoice, ims.IMS.uc_4_ReceiveClosedInvoices ]
+View demoView : UseCaseView [
+    
+    uc_1_1_CreateInvoice,
+    uc_1_ManageInvoices,
+     uc_1_2_UpdateInvoice
+]
 
 
 /**********************************************************************/
